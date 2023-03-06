@@ -4,6 +4,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.sql.ResultSet;
+import java.util.List;
+
 import org.junit.Test;
 
 final class ProcessorTest implements Processor {
@@ -27,17 +29,51 @@ final class ProcessorTest implements Processor {
 			assertTrue(false);
 		}
 	}
+
 }
 
 public class TravelAppTest {
-    @Test
-    public void shouldReadAndWrite() {
-		try (TravelAppDB db = new TravelAppDB(); TravelApp app = new TravelApp()) {			
-			app.write("CREATE TABLE IF NOT EXISTS hi(hello VARCHAR(10), world VARCHAR(10))");
-			app.write("INSERT INTO hi (hello, world) VALUES ('Academy', 'Cool')");
-			app.read(new ProcessorTest(), "SELECT hello, world FROM hi");
-			app.write("DROP TABLE hi");
-	        assertTrue(true);
-		}
-    }
+	@Test
+	public void writePilot() {
+		Pilot adam = new Pilot("Adam", 10, 1);
+	}
+	
+	@Test
+	public void writeHelicopter() {
+		
+		Pilot levi = new Pilot("Levi", 100, 1);
+		
+		String myPilotId = levi.getId().toString();
+		
+		Helicopter breeze = new Helicopter("Breeze", "Apache", 3); // Create new heli
+		breeze.assignPilot(myPilotId); // Assign existing pilot to heli
+		
+		Helicopter thunder = new Helicopter("Thunder", "Non-Apache", 5); // Create new heli with no pilotID assignment
+		thunder.assignPilot(myPilotId); // assign same pilot as the previous heli
+		
+		assertTrue(true);
+		
+		// Check that the pilot has been assigned to both helicopters
+		//assertTrue(breeze.
+	}
+	
+	
+	@Test
+	public void listHelicopters() {
+		
+		Pilot harvey = new Pilot("Harvey", 1, 10); // Create new pilot
+		
+		String myPilotId = harvey.getId().toString();
+		
+		Helicopter banger = new Helicopter("Banger", "Apache", 3); // Create new heli
+		banger.assignPilot(myPilotId); // Assign existing pilot to heli
+		
+		Helicopter clanger = new Helicopter("Clanger", "Non-Apache", 5); // Create new heli with no pilotID assignment
+		clanger.assignPilot(myPilotId); // assign same pilot as the previous heli
+		
+		// Check the make of each helicopter
+		assertTrue(banger.getMake().equals("Banger"));
+		assertTrue(clanger.getMake().equals("Clanger"));
+		
+	}
 }
