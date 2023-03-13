@@ -8,17 +8,22 @@ assignees: ''
 ---
 
 **Describe the bug**
-A clear and concise description of what the bug is.
+
+A clear and concise description of what the bug is:
+
+- A
+- B
+- C
 
 **To Reproduce**
-Steps to reproduce the behavior:
+Steps to reproduce the behaviour:
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**Expected behaviour**
+A clear and concise description of what you expected to happen - copy of expected behaviour straight from the test case
 
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
